@@ -11,7 +11,7 @@
 	<groupId>com.junior</groupId>
 	<artifactId>webservermongodb</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webserver</name>
+	<name>demo</name>
 	<description>Webserver mongodb - Spring Boot</description>
 	<url/>
 	<licenses>
@@ -32,17 +32,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
