@@ -36,6 +36,12 @@ public class PostResorce {
     return ResponseEntity.created(uri).build();
   }
 
+  @RequestMapping(method = RequestMethod.GET)
+  public ResponseEntity<List<Post>> findAll() {
+    List<Post> list = service.findAll();
+    return ResponseEntity.ok().body(list);
+  }
+
   @RequestMapping(value="/{id}", method = RequestMethod.GET)
   public ResponseEntity<Post> findById(@PathVariable String id) {
     Post obj = service.findById(id);

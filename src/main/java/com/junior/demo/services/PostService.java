@@ -21,6 +21,10 @@ public class PostService {
     return PostRepository.insert(obj);
   }
 
+  public List<Post> findAll() {
+    return PostRepository.findAll();
+  }
+
   public Post findById(String id) {
     Post Post = PostRepository.findById(id).orElse(null);
     if (Post == null) {
