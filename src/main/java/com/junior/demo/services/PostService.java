@@ -93,7 +93,7 @@ public class PostService {
     Post obj = findById(id);
     CommentDTO comment = obj.getComments().get(Integer.parseInt(index));
 
-    if (!comment.getAuthor().getId().equals(userId)) {
+    if (!comment.getAuthor().getId().equals(userId) && !obj.getAuthor().getId().equals(userId)) {
       throw new ForbiddenException("Usuário não autorizado");
     }
 
