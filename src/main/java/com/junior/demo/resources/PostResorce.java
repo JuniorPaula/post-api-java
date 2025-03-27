@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.junior.demo.domain.Post;
+import com.junior.demo.dto.CommentDTO;
 import com.junior.demo.dto.PostDTO;
 import com.junior.demo.resources.utils.URL;
 import com.junior.demo.services.PostService;
@@ -53,6 +54,13 @@ public class PostResorce {
     Post obj = service.fromDTO(objDTO);
     obj.setId(id);
     service.update(obj);
+
+    return ResponseEntity.noContent().build();
+  }
+
+  @RequestMapping(value="/{id}/comment", method = RequestMethod.POST)
+  public ResponseEntity<Void> addComment(@PathVariable String id, @RequestBody CommentDTO objDTO) {
+    service.addComment(id, objDTO);
 
     return ResponseEntity.noContent().build();
   }

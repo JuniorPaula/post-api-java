@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.junior.demo.domain.Post;
+import com.junior.demo.dto.CommentDTO;
 import com.junior.demo.dto.PostDTO;
 import com.junior.demo.repository.PostRepository;
 import com.junior.demo.services.exceptions.ForbiddenException;
@@ -63,6 +64,15 @@ public class PostService {
     }
 
     PostRepository.deleteById(id);
+    return null;
+  }
+
+  public Void addComment(String id, CommentDTO commentDto) {
+    Post obj = findById(id);
+    CommentDTO comment = new CommentDTO(commentDto.getText(), new Date(), commentDto.getAuthor());
+
+    obj.getComments().add(comment);
+    PostRepository.save(obj);
     return null;
   }
 
