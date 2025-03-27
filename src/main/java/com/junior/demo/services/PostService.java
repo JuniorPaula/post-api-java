@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.junior.demo.domain.Post;
 import com.junior.demo.dto.PostDTO;
 import com.junior.demo.repository.PostRepository;
+import com.junior.demo.services.exceptions.ForbiddenException;
 import com.junior.demo.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -45,7 +46,7 @@ public class PostService {
   public Post update(Post obj) {
     Post newObj = findById(obj.getId());
     if (!newObj.getAuthor().getId().equals(obj.getAuthor().getId())) {
-      throw new ObjectNotFoundException("Post não encontrado");
+      throw new ForbiddenException("Usuário não autorizado");
     }
 
     newObj.setTitle(obj.getTitle() != null ? obj.getTitle() : newObj.getTitle());
