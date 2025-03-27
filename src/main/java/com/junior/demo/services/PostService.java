@@ -56,6 +56,16 @@ public class PostService {
     return PostRepository.save(newObj);
   }
 
+  public Void delete(String id, String userId) {
+    Post obj = findById(id);
+    if (!obj.getAuthor().getId().equals(userId)) {
+      throw new ForbiddenException("Usuário não autorizado");
+    }
+
+    PostRepository.deleteById(id);
+    return null;
+  }
+
   public Post fromDTO(PostDTO obj) {
     return new Post(obj.getId(), new Date(), obj.getTitle(), obj.getBody(), obj.getAuthor());
   }

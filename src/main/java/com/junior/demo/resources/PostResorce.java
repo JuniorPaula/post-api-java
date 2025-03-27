@@ -57,6 +57,12 @@ public class PostResorce {
     return ResponseEntity.noContent().build();
   }
 
+  @RequestMapping(value="/{id}/author/{userId}", method = RequestMethod.DELETE)
+  public ResponseEntity<Void> update(@PathVariable String id, @PathVariable String userId) {
+    service.delete(id, userId);
+    return ResponseEntity.noContent().build();
+  }
+
   @RequestMapping(value="/textsearch", method = RequestMethod.GET)
   public ResponseEntity<List<Post>> findByTitle(@RequestParam(value="text", defaultValue="") String text) {
     text = URL.decodeParam(text);
