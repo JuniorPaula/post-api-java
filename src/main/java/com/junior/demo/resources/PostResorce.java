@@ -48,6 +48,15 @@ public class PostResorce {
     return ResponseEntity.ok().body(obj);
   }
 
+  @RequestMapping(value="/{id}", method = RequestMethod.PUT)
+  public ResponseEntity<Void> update(@PathVariable String id, @RequestBody PostDTO objDTO) {
+    Post obj = service.fromDTO(objDTO);
+    obj.setId(id);
+    service.update(obj);
+
+    return ResponseEntity.noContent().build();
+  }
+
   @RequestMapping(value="/textsearch", method = RequestMethod.GET)
   public ResponseEntity<List<Post>> findByTitle(@RequestParam(value="text", defaultValue="") String text) {
     text = URL.decodeParam(text);

@@ -42,6 +42,15 @@ public class PostService {
     return PostRepository.findByTitleOrDate(text, minDate, maxDate);
   }
 
+  public Post update(Post obj) {
+    Post newObj = findById(obj.getId());
+    newObj.setTitle(obj.getTitle() != null ? obj.getTitle() : newObj.getTitle());
+    newObj.setBody(obj.getBody() != null ? obj.getBody() : newObj.getBody());
+    newObj.setAuthor(obj.getAuthor() != null ? obj.getAuthor() : newObj.getAuthor());
+
+    return PostRepository.save(newObj);
+  }
+
   public Post fromDTO(PostDTO obj) {
     return new Post(obj.getId(), new Date(), obj.getTitle(), obj.getBody(), obj.getAuthor());
   }

@@ -49,7 +49,7 @@ public class UserResorce {
   }
 
   @RequestMapping(value="/{id}", method = RequestMethod.PUT)
-  public ResponseEntity<Void> insert(@PathVariable String id, @RequestBody UserDTO objDTO) {
+  public ResponseEntity<Void> update(@PathVariable String id, @RequestBody UserDTO objDTO) {
     User obj = service.fromDTO(objDTO);
     obj.setId(id);
     service.update(obj);
