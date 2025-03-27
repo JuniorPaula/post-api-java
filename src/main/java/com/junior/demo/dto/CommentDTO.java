@@ -43,4 +43,9 @@ public class CommentDTO implements Serializable {
   public void setAuthor(AuthorDTO author) {
     this.author = author;
   }
+
+  @Override
+  public String toString() {
+    return "CommentDTO [text=" + text + ", date=" + date + ", author=" + author + "]";
+  }
 }

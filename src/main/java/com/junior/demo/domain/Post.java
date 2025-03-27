@@ -101,4 +101,9 @@ public class Post implements  Serializable{
     final Post other = (Post) obj;
     return !((this.id == null) ? (other.id != null) : !this.id.equals(other.id));
   }
+
+  @Override
+  public String toString() {
+    return "Post{" + "id=" + id + ", date=" + date + ", title=" + title + ", body=" + body + ", author=" + author + ", comments=" + comments + '}';
+  }
 }
