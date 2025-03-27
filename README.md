@@ -30,77 +30,27 @@ Ela permite o gerenciamento de usuários, posts e comentários de forma simples 
 
 ##  Endpoints disponíveis
 
-Método
+GET `/users`
 
-Rota
+POST `/users`
 
-Descrição
+PUT `/users`
 
-GET
+DELETE `/users/{id}`
 
-`/users`
+GET `/posts`
 
-Lista todos os usuários
+POST `/posts`
 
-GET
+PUT `/posts/:id`
 
-`/posts`
+DELETE `/posts`
 
-Lista todos os posts
+POST `/posts/:id/comment`
 
-POST
+PUT `/posts/:id/comment/index`
 
-`/posts`
-
-Cria um novo post
-
-POST
-
-`/posts/:id/comment`
-
-Adiciona um comentário a um post
-
-PUT
-
-`/posts/:id/comment/index`
-
-Atualiza um comentário específico
-
-DELETE
-
-`/posts/{id}/comment/{index}/author/{userId}`
-
-Deleta um comentário do autor especificado
-
-PUT
-
-`/posts/:id`
-
-Atualiza um post
-
-DELETE
-
-`/posts`
-
-Remove todos os posts
-
-POST
-
-`/users`
-
-Cria um novo usuário
-
-PUT
-
-`/users`
-
-Atualiza os dados de um usuário
-
-DELETE
-
-`/users/{id}`
-
-Remove um usuário
+DELETE `/posts/{id}/comment/{index}/author/{userId}`
 
 ----------
 
