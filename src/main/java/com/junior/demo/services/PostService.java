@@ -44,6 +44,10 @@ public class PostService {
 
   public Post update(Post obj) {
     Post newObj = findById(obj.getId());
+    if (!newObj.getAuthor().getId().equals(obj.getAuthor().getId())) {
+      throw new ObjectNotFoundException("Post não encontrado");
+    }
+
     newObj.setTitle(obj.getTitle() != null ? obj.getTitle() : newObj.getTitle());
     newObj.setBody(obj.getBody() != null ? obj.getBody() : newObj.getBody());
     newObj.setAuthor(obj.getAuthor() != null ? obj.getAuthor() : newObj.getAuthor());
