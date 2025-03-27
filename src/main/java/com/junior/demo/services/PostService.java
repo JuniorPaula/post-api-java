@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.junior.demo.domain.Post;
+import com.junior.demo.dto.PostDTO;
 import com.junior.demo.repository.PostRepository;
 import com.junior.demo.services.exceptions.ObjectNotFoundException;
 
@@ -15,6 +16,10 @@ public class PostService {
 
   @Autowired
   private PostRepository PostRepository;
+
+  public Post insert(Post obj) {
+    return PostRepository.insert(obj);
+  }
 
   public Post findById(String id) {
     Post Post = PostRepository.findById(id).orElse(null);
@@ -31,5 +36,9 @@ public class PostService {
   public List<Post> findByTitleOrDate(String text, Date minDate, Date maxDate) {
     maxDate = new Date(maxDate.getTime() + 24 * 60 * 60 * 1000);
     return PostRepository.findByTitleOrDate(text, minDate, maxDate);
+  }
+
+  public Post fromDTO(PostDTO obj) {
+    return new Post(obj.getId(), new Date(), obj.getTitle(), obj.getBody(), obj.getAuthor());
   }
 }
