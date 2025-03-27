@@ -65,6 +65,16 @@ public class PostResorce {
     return ResponseEntity.noContent().build();
   }
 
+  @RequestMapping(value="/{id}/comment/{index}", method = RequestMethod.PUT)
+  public ResponseEntity<Void> updateComment(
+    @PathVariable String id,
+    @PathVariable String index,
+    @RequestBody CommentDTO objDTO) {
+    service.updateComment(id, index, objDTO);
+
+    return ResponseEntity.noContent().build();
+  }
+
   @RequestMapping(value="/{id}/author/{userId}", method = RequestMethod.DELETE)
   public ResponseEntity<Void> update(@PathVariable String id, @PathVariable String userId) {
     service.delete(id, userId);

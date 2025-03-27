@@ -76,6 +76,19 @@ public class PostService {
     return null;
   }
 
+  public Void updateComment(String id, String index, CommentDTO commentDto) {
+    Post obj = findById(id);
+    CommentDTO comment = obj.getComments().get(Integer.parseInt(index));
+
+    if (!comment.getAuthor().getId().equals(commentDto.getAuthor().getId())) {
+      throw new ForbiddenException("Usuário não autorizado");
+    }
+
+    comment.setText(commentDto.getText());
+    PostRepository.save(obj);
+    return null;
+  }
+
   public Post fromDTO(PostDTO obj) {
     return new Post(obj.getId(), new Date(), obj.getTitle(), obj.getBody(), obj.getAuthor());
   }
